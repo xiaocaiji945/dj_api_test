@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+{#    <p>This is detail</p>#}
+{#    <h1>{{ question.description }}</h1>#}
+{#    <ul>#}
+{#        {% for q in question.ttttt_set.all %}#}
+{#            <li>{{ q.name }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+    <form action="{% url 'interface:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ question.name }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for q in question.ttttt_set.all %}
+            <input type="radio" name="ttttt" id="q{{ forloop.counter }}" value="{{ q.id }}">
+            <label for="q{{ forloop.counter }}">{{ q.name }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+    </form>
+  </body>
+</html>

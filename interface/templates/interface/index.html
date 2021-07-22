@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page12</p>
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+{#            <li><a href="/interface/{{ question.id }}/">{{ question.name }}</a></li>#}
+{#            <li><a href="{% url 'detail' question.id %}">{{ question.name }}</a></li>#}
+            <li><a href="{% url 'interface:detail' question.id %}">{{ question.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No interface are available.</p>
+    {% endif %}
+  </body>
+</html>
